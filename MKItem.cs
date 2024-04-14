@@ -18,6 +18,8 @@ namespace Minikit.Inventory
         {
             itemDefinition = _itemDefinition;
 
+            tags = _itemDefinition.GetTags();
+
             dynamicShards.AddRange(itemDefinition.GetAllDynamicShards());
             if (_additionalDynamicShards != null)
             {
