@@ -59,6 +59,22 @@ namespace Minikit.Inventory
             return false;
         }
 
+        public bool RemoveItem(MKItem _item)
+        {
+            foreach (MKSlot slot in slots)
+            {
+                if (slot.item == _item)
+                {
+                    slot.SetItem(null);
+                    OnItemRemoved(_item);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public List<MKSlot> GetSlots(MKTagQuery _slotTagQuery = null)
         {
             return GetSlots<MKSlot>(_slotTagQuery);
