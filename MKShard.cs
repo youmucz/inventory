@@ -124,4 +124,21 @@ namespace Minikit.Inventory
             return color.ToString();
         }
     }
+
+    public class MKShard_Tag : MKShard
+    {
+        public MKTag abilityTag;
+    }
+
+    public class MKShard_Sprite : MKShard
+    {
+        public Sprite sprite;
+    }
+
+    public class MKShard_Box : MKShard
+    {
+        public Vector3 size;
+        public Vector3 offset;
+        public Vector3 rotation;
+    }
 } // Minikit.Inventory namespace
