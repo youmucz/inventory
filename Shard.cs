@@ -1,54 +1,51 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+using System.Linq;
+using Godot;
  
 namespace Minikit.Inventory
 {
     [Serializable]
-    [MKShardHidden]
-    public class MKShard
+    [ShardHidden]
+    public class Shard
     {
-        public List<MKTag> tags;
-
-
+        public List<Tag> Tags;
+        
         public virtual string GetDebugPrintString() { return "";  }
 
-        public void OnAddedToItem(MKItem _item)
+        public void OnAddedToItem(Item item)
         {
 
         }
 
-        public void OnRemovedFromItem(MKItem _item)
+        public void OnRemovedFromItem(Item item)
         {
 
         }
     }
 
-    public class MKShard_Text : MKShard
+    public class ShardText : Shard
     {
-        public string text;
-
+        public string Text;
 
         public override string GetDebugPrintString()
         {
-            return text;
+            return Text;
         }
     }
 
-    public class MKShard_NumberFloat : MKShard
+    public class ShardNumberFloat : Shard
     {
-        public float number;
-
+        public float Number;
 
         public override string GetDebugPrintString()
         {
-            return number.ToString();
+            return Number.ToString();
         }
     }
 
-    public class MKShard_NumberInt : MKShard
+    public class ShardNumberInt : Shard
     {
         public int number;
 
@@ -59,7 +56,7 @@ namespace Minikit.Inventory
         }
     }
 
-    public class MKShard_NumberDouble : MKShard
+    public class ShardNumberDouble : Shard
     {
         public double number;
 
@@ -70,7 +67,7 @@ namespace Minikit.Inventory
         }
     }
 
-    public class MKShard_Bool : MKShard
+    public class ShardBool : Shard
     {
         public bool value;
 
@@ -81,7 +78,7 @@ namespace Minikit.Inventory
         }
     }
 
-    public class MKShard_Vector2 : MKShard
+    public class ShardVector2 : Shard
     {
         public Vector2 vector2;
 
@@ -92,10 +89,9 @@ namespace Minikit.Inventory
         }
     }
 
-    public class MKShard_Vector3 : MKShard
+    public class ShardVector3 : Shard
     {
         public Vector3 vector3;
-
 
         public override string GetDebugPrintString()
         {
@@ -103,21 +99,19 @@ namespace Minikit.Inventory
         }
     }
 
-    public class MKShard_Rect : MKShard
-    {
-        public Rect rect;
+    // public class MKShard_Rect : Shard
+    // {
+    //     public Rect rect;
+    //
+    //     public override string GetDebugPrintString()
+    //     {
+    //         return rect.ToString();
+    //     }
+    // }
 
-
-        public override string GetDebugPrintString()
-        {
-            return rect.ToString();
-        }
-    }
-
-    public class MKShard_Color : MKShard
+    public class ShardColor : Shard
     {
         public Color color;
-
 
         public override string GetDebugPrintString()
         {
@@ -125,20 +119,25 @@ namespace Minikit.Inventory
         }
     }
 
-    public class MKShard_Tag : MKShard
+    public class ShardTag : Shard
     {
-        public MKTag abilityTag;
+        public Tag AbilityTag;
     }
 
-    public class MKShard_Sprite : MKShard
+    public class ShardSprite2D : Shard
     {
-        public Sprite sprite;
+        public Sprite2D Sprite;
+    }
+    
+    public class ShardSprite3D : Shard
+    {
+        public Sprite3D Sprite;
     }
 
-    public class MKShard_Box : MKShard
+    public class ShardBox : Shard
     {
-        public Vector3 size;
-        public Vector3 offset;
-        public Vector3 rotation;
+        public Vector3 Size;
+        public Vector3 Offset;
+        public Vector3 Rotation;
     }
-} // Minikit.Inventory namespace
+}
